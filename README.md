@@ -12,13 +12,14 @@ Code step-by-step instruction:
     ```
     import cv2
     import time
-    import HandTrackingModule as htm
     import wx
     import numpy as np
     from pynput.mouse import Button, Controller
     
 2. Import module:
-
+    ```
+    import HandTrackingModule as htm
+    
 3. Set initial values:
     ```
     # Helps cross-platform use
