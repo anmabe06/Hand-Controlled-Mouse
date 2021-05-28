@@ -34,9 +34,6 @@ cap.set(4, hCam)
 # Creates mouse(as an object)
 mouse = Controller()
 
-# FPS tracking
-cTime, pTime = 0, 0
-
 # Create detector
 detector = htm.handDetector(detectionCon=0.75)
 
@@ -160,12 +157,6 @@ while True:
 
         #Update mouse coordinates
         prevLocationX, prevLocationY = currentLocX, clocY
-
-    # FPS Calculation
-    cTime = time.time()
-    fps = 1 / (cTime - pTime)
-    pTime = cTime
-    cv2.putText(img, f'FPS: {int(fps)}', (400, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
 
     # Show camera
     cv2.imshow("Image", img)
