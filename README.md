@@ -16,6 +16,7 @@ Code step-by-step instruction:
     import wx
     import numpy as np
     from pynput.mouse import Button, Controller
+    
 2. Import module:
 
 3. Set initial values:
@@ -49,9 +50,6 @@ Code step-by-step instruction:
     # Creates mouse(as an object)
     mouse = Controller()
 
-    # FPS tracking
-    cTime, pTime = 0, 0
-
     # Create detector
     detector = htm.handDetector(detectionCon=0.75)
 
@@ -70,6 +68,7 @@ Code step-by-step instruction:
     screenHalf = hCam / 2
     topQuarter = hCam / 4 * 3
     bottomQuarter = hCam / 4
+    
 4. Make while true loop, and read each frame:
     ```
     while True:
@@ -79,6 +78,7 @@ Code step-by-step instruction:
     img = detector.findHands(img)
     # Detect point positions
     lmList = detector.findPosition(img, draw=False)
+    
 5. Add if a hand is found condition:
     ```
     # If there is a hand
@@ -99,6 +99,7 @@ Code step-by-step instruction:
         clocY = prevLocationY + (y3 - prevLocationY) / smoothening
         #Invert coordinates to mirror human
         iCurrentLocX = wScr - currentLocX
+        
 7. Add mouse functionalities:
     ```
     # If y coordinate of tip of index is lower than y coordinate of index knuckle
@@ -178,14 +179,9 @@ Code step-by-step instruction:
 
         #Update mouse coordinates
         prevLocationX, prevLocationY = currentLocX, clocY
+        
 9. Show camera:
       ```
-      # FPS Calculation
-      cTime = time.time()
-      fps = 1 / (cTime - pTime)
-      pTime = cTime
-      cv2.putText(img, f'FPS: {int(fps)}', (400, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
-
       # Show camera
       cv2.imshow("Image", img)
       # Wait
